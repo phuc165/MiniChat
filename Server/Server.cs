@@ -59,6 +59,10 @@ namespace Server
                 while (true)
                 {
                     string message = await handler.ReadMessage();
+                    if (string.IsNullOrEmpty(message))
+                    {
+                        break;
+                    }
                     Console.WriteLine($"Received: {message}");
                     // Broadcast the message to all other clients
                     List<ClientHandler> clientsToSend;
